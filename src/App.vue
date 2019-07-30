@@ -1,23 +1,52 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <Header :addTodo="addTodo"></Header>
+      <List :todos="todos"></List>
+      <Footer></Footer>
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-}
+<script type="text/ecmascript-6">
+  import Header from './components/Header.vue'
+  import List from './components/List.vue'
+  import Footer from './components/Footer.vue'
+
+  export default {
+    data () {
+      return {
+        todos: [
+          {id: 1, title: 'AAA', complete: false},
+          {id: 3, title: 'BBB', complete: true},
+          {id: 5, title: 'CCC', complete: false},
+        ]
+      }
+    },
+
+    methods: {
+      addTodo (todo) {
+        this.todos.unshift(todo)
+      }
+    },
+
+    components: {
+      Header,
+      List,
+      Footer
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .todo-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .todo-container .todo-wrap {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 </style>

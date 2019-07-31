@@ -3,7 +3,7 @@
    @mouseenter="handleEnter(true)"
    @mouseleave="handleEnter(false)">
     <label>
-      <input type="checkbox" v-model="isCheck"/>>
+      <input type="checkbox" v-model="isCheck"/>
         <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" v-show="isShow" @click="deleteItem">删除</button>
@@ -29,11 +29,11 @@
       console.log('Item data()',this.m);
       return {
         bgcolor: 'white',
-        isShow: 'false'
+        isShow: false
       }
     },
     methods: {
-      handleEnter () {
+      handleEnter (isEnter) {
         if (isEnter) {
           this.bgcolor = '#cccccc',
           this.isShow = true
